@@ -38,6 +38,13 @@ tests:
       - equal:
           path: spec.replicas
           value: 0
+  - it: should not have replicas when nullified
+    set:
+      deployment:
+        replicas: null
+    asserts:
+      - notExists:
+          path: spec.replicas
   - it: should have revisionHistoryLimit with specified value
     set:
       deployment:
